@@ -61,8 +61,8 @@
 				045F89D526A2E2B000604B41 /* Supporting */,
 				045F89D726A2E2BA00604B41 /* Controllers */,
 				045F89DD26A2E6CC00604B41 /* Models */,
+				045F89ED26A3418600604B41 /* LoginViewModel */,
 				045F89B826A0A53D00604B41 /* Assets.xcassets */,
-				045F89E826A33C0600604B41 /* GreetingViewModel.swift */,
 				045F89BA26A0A53D00604B41 /* LaunchScreen.storyboard */,
 			);
 			path = "MVX Patterns";
@@ -92,6 +92,14 @@
 				045F89DA26A2E6C700604B41 /* Person.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		045F89ED26A3418600604B41 /* LoginViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				045F89E826A33C0600604B41 /* GreetingViewModel.swift */,
+			);
+			path = LoginViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

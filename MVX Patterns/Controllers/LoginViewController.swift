@@ -48,8 +48,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let person = Person(name: "max")
-        viewModel = GreetingViewModel(person: person)
+        viewModel = GreetingViewModel()
         textfield.delegate = self
         setUI()
     }
@@ -67,7 +66,6 @@ class LoginViewController: UIViewController {
     @objc private func tapButton() {
         viewModel.showGreeting()
             showName()
-        
     }
     
     private func setConstraints() {
@@ -91,7 +89,7 @@ class LoginViewController: UIViewController {
     
     private func showName() {
         if let name = textfield.text {
-            viewModel = GreetingViewModel(person: Person(name: name))
+            viewModel.person.name = name
             viewModel.showGreeting()
         }
  }
