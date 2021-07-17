@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol LoginViewProtocol: AnyObject {
-    func setGreeting(_ greeting: String)
-}
 
 class LoginViewController: UIViewController {
     
@@ -40,10 +37,19 @@ class LoginViewController: UIViewController {
         tf.backgroundColor = #colorLiteral(red: 0.1794060601, green: 0.1794060601, blue: 0.1794060601, alpha: 1)
         return tf
     }()
-    private var presenter: LoginPresenterProtocol?
+    
+    private var viewModel: GreetingViewModelProtocol! {
+        didSet {
+            viewModel.greetingDidChange = { [unowned self] viewModel in
+                self.greetingLabel.text = viewModel.greeting
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let person = Person(name: "max")
+        viewModel = GreetingViewModel(person: person)
         textfield.delegate = self
         setUI()
     }
@@ -59,7 +65,9 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func tapButton() {
-        showName()
+        viewModel.showGreeting()
+            showName()
+        
     }
     
     private func setConstraints() {
@@ -82,13 +90,12 @@ class LoginViewController: UIViewController {
     }
     
     private func showName() {
-        if let text = textfield.text {
-            presenter = LoginPresenter(view: self, person: Person(name: text))
+        if let name = textfield.text {
+            viewModel = GreetingViewModel(person: Person(name: name))
+            viewModel.showGreeting()
         }
-        presenter?.showGreeting()
-    }
+ }
 }
-
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         showName()
@@ -96,9 +103,4 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
-extension LoginViewController: LoginViewProtocol {
-    func setGreeting(_ greeting: String) {
-        greetingLabel.text = greeting
-    }
-}
 

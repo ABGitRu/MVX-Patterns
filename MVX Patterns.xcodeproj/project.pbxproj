@@ -13,7 +13,7 @@
 		045F89B926A0A53D00604B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045F89B826A0A53D00604B41 /* Assets.xcassets */; };
 		045F89BC26A0A53D00604B41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045F89BA26A0A53D00604B41 /* LaunchScreen.storyboard */; };
 		045F89DB26A2E6C700604B41 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F89DA26A2E6C700604B41 /* Person.swift */; };
-		045F89E026A2EA6200604B41 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F89DF26A2EA6200604B41 /* LoginPresenter.swift */; };
+		045F89E926A33C0600604B41 /* GreetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F89E826A33C0600604B41 /* GreetingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		045F89BB26A0A53D00604B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		045F89BD26A0A53D00604B41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045F89DA26A2E6C700604B41 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		045F89DF26A2EA6200604B41 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		045F89E826A33C0600604B41 /* GreetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 				045F89D526A2E2B000604B41 /* Supporting */,
 				045F89D726A2E2BA00604B41 /* Controllers */,
 				045F89DD26A2E6CC00604B41 /* Models */,
-				045F89E326A2EC7400604B41 /* Presenters */,
 				045F89B826A0A53D00604B41 /* Assets.xcassets */,
+				045F89E826A33C0600604B41 /* GreetingViewModel.swift */,
 				045F89BA26A0A53D00604B41 /* LaunchScreen.storyboard */,
 			);
 			path = "MVX Patterns";
@@ -92,14 +92,6 @@
 				045F89DA26A2E6C700604B41 /* Person.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		045F89E326A2EC7400604B41 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				045F89DF26A2EA6200604B41 /* LoginPresenter.swift */,
-			);
-			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,10 +164,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				045F89B426A0A53300604B41 /* LoginViewController.swift in Sources */,
+				045F89E926A33C0600604B41 /* GreetingViewModel.swift in Sources */,
 				045F89B026A0A53300604B41 /* AppDelegate.swift in Sources */,
 				045F89DB26A2E6C700604B41 /* Person.swift in Sources */,
 				045F89B226A0A53300604B41 /* SceneDelegate.swift in Sources */,
-				045F89E026A2EA6200604B41 /* LoginPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
