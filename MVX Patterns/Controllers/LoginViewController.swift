@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginViewProtocol: AnyObject {
+    func setGreeting(_ greeting: String)
+}
+
 class LoginViewController: UIViewController {
     
     let button: UIButton = {
@@ -27,9 +31,13 @@ class LoginViewController: UIViewController {
         label.textColor = .white
         return label
     }()
+    
+    private var presenter: LoginPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let person = Person(name: "Alex")
+        presenter = LoginPresenter(view: self, person: person)
         setUI()
     }
     
@@ -43,8 +51,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func tapButton() {
-        let person = Person(name: "Alex")
-        greetingLabel.text = "Hello, \(person.name)"
+        presenter.showGreeting()
     }
     
     private func setConstraints() {
@@ -65,3 +72,8 @@ class LoginViewController: UIViewController {
 
 }
 
+extension LoginViewController: LoginViewProtocol {
+    func setGreeting(_ greeting: String) {
+        greetingLabel.text = greeting
+    }
+}
