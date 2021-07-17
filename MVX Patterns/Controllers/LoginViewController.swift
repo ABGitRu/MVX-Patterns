@@ -32,12 +32,19 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private var presenter: LoginPresenterProtocol!
+    let textfield: UITextField = {
+        let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.borderStyle = .roundedRect
+        tf.placeholder = "Enter your name"
+        tf.backgroundColor = #colorLiteral(red: 0.1794060601, green: 0.1794060601, blue: 0.1794060601, alpha: 1)
+        return tf
+    }()
+    private var presenter: LoginPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let person = Person(name: "Alex")
-        presenter = LoginPresenter(view: self, person: person)
+        textfield.delegate = self
         setUI()
     }
     
@@ -48,10 +55,11 @@ class LoginViewController: UIViewController {
     private func setUI() {
         view.addSubview(button)
         view.addSubview(greetingLabel)
+        view.addSubview(textfield)
     }
     
     @objc private func tapButton() {
-        presenter.showGreeting()
+        showName()
     }
     
     private func setConstraints() {
@@ -63,13 +71,29 @@ class LoginViewController: UIViewController {
             
             greetingLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             greetingLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            greetingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            greetingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            
+            textfield.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -10),
+            textfield.widthAnchor.constraint(equalTo: button.widthAnchor),
+            textfield.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 
         ]
         NSLayoutConstraint.activate(constraints)
     }
+    
+    private func showName() {
+        if let text = textfield.text {
+            presenter = LoginPresenter(view: self, person: Person(name: text))
+        }
+        presenter?.showGreeting()
+    }
+}
 
-
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        showName()
+        return true
+    }
 }
 
 extension LoginViewController: LoginViewProtocol {
@@ -77,3 +101,4 @@ extension LoginViewController: LoginViewProtocol {
         greetingLabel.text = greeting
     }
 }
+

@@ -17,6 +17,7 @@ class LoginPresenter: LoginPresenterProtocol {
     unowned let view: LoginViewProtocol
     let person: Person
     
+    
     required init(view: LoginViewProtocol, person: Person) {
         self.view = view
         self.person = person
